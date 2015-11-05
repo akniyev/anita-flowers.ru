@@ -1,0 +1,1 @@
+<a href="http://www.youtube.com/watch?v=iAJncW1Qj9w?width=700&amp;height=400" data-rel="prettyPhoto" class="prettyPhoto not_control link_video">Смотреть видео</a>
