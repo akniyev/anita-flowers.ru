@@ -1,9 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Почему мы");
-?><?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Готовый сайт студии дизайна sStudio");
+$APPLICATION->SetTitle("О нас");
 ?>
 
 
