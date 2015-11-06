@@ -44,7 +44,7 @@ $APPLICATION->SetTitle("Мероприятия");
 		<div class="container">
 			<div class="row">
 
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="service">
 						<a>
 							<div class="icon icon1"></div>
@@ -73,7 +73,7 @@ $APPLICATION->SetTitle("Мероприятия");
 						</p>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="service">
 						<a>
 							<div class="icon icon2"></div>
@@ -102,7 +102,7 @@ $APPLICATION->SetTitle("Мероприятия");
 						</p>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="service">
 						<a>
 							<div class="icon icon3"></div>
@@ -125,6 +125,152 @@ $APPLICATION->SetTitle("Мероприятия");
 								Array(
 									"AREA_FILE_SHOW" => "file",
 									"PATH" => SITE_DIR."sstudioinclude/ico3text.php",
+									"EDIT_TEMPLATE" => ""
+								)
+							);?>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="service">
+						<a>
+							<div class="icon icon1"></div>
+							<div class="title_cont">
+								<?$APPLICATION->IncludeComponent(
+									"bitrix:main.include",
+									"",
+									Array(
+										"AREA_FILE_SHOW" => "file",
+										"PATH" => SITE_DIR."sstudioinclude/ico1tit.php",
+										"EDIT_TEMPLATE" => ""
+									)
+								);?>
+							</div>
+						</a>
+						<p>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								Array(
+									"AREA_FILE_SHOW" => "file",
+									"PATH" => SITE_DIR."sstudioinclude/ico1text.php",
+									"EDIT_TEMPLATE" => ""
+								)
+							);?>
+						</p>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="service">
+						<a>
+							<div class="icon icon1"></div>
+							<div class="title_cont">
+								<?$APPLICATION->IncludeComponent(
+									"bitrix:main.include",
+									"",
+									Array(
+										"AREA_FILE_SHOW" => "file",
+										"PATH" => SITE_DIR."sstudioinclude/ico1tit.php",
+										"EDIT_TEMPLATE" => ""
+									)
+								);?>
+							</div>
+						</a>
+						<p>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								Array(
+									"AREA_FILE_SHOW" => "file",
+									"PATH" => SITE_DIR."sstudioinclude/ico1text.php",
+									"EDIT_TEMPLATE" => ""
+								)
+							);?>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="service">
+						<a>
+							<div class="icon icon2"></div>
+							<div class="title_cont">
+								<?$APPLICATION->IncludeComponent(
+									"bitrix:main.include",
+									"",
+									Array(
+										"AREA_FILE_SHOW" => "file",
+										"PATH" => SITE_DIR."sstudioinclude/ico2tit.php",
+										"EDIT_TEMPLATE" => ""
+									)
+								);?>
+							</div>
+						</a>
+						<p>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								Array(
+									"AREA_FILE_SHOW" => "file",
+									"PATH" => SITE_DIR."sstudioinclude/ico2text.php",
+									"EDIT_TEMPLATE" => ""
+								)
+							);?>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="service">
+						<a>
+							<div class="icon icon3"></div>
+							<div class="title_cont">
+								<?$APPLICATION->IncludeComponent(
+									"bitrix:main.include",
+									"",
+									Array(
+										"AREA_FILE_SHOW" => "file",
+										"PATH" => SITE_DIR."sstudioinclude/ico3tit.php",
+										"EDIT_TEMPLATE" => ""
+									)
+								);?>
+							</div>
+						</a>
+						<p>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								Array(
+									"AREA_FILE_SHOW" => "file",
+									"PATH" => SITE_DIR."sstudioinclude/ico3text.php",
+									"EDIT_TEMPLATE" => ""
+								)
+							);?>
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="service">
+						<a>
+							<div class="icon icon1"></div>
+							<div class="title_cont">
+								<?$APPLICATION->IncludeComponent(
+									"bitrix:main.include",
+									"",
+									Array(
+										"AREA_FILE_SHOW" => "file",
+										"PATH" => SITE_DIR."sstudioinclude/ico1tit.php",
+										"EDIT_TEMPLATE" => ""
+									)
+								);?>
+							</div>
+						</a>
+						<p>
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								Array(
+									"AREA_FILE_SHOW" => "file",
+									"PATH" => SITE_DIR."sstudioinclude/ico1text.php",
 									"EDIT_TEMPLATE" => ""
 								)
 							);?>
