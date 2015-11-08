@@ -6,9 +6,9 @@ $APPLICATION->SetTitle("Мероприятия");
 
 
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.detail",
-	"official",
-	Array(
+	"bitrix:news.detail", 
+	"gallery", 
+	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_ELEMENT_CHAIN" => "N",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -22,7 +22,7 @@ $APPLICATION->SetTitle("Мероприятия");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => "official",
+		"COMPONENT_TEMPLATE" => "gallery",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -32,7 +32,10 @@ $APPLICATION->SetTitle("Мероприятия");
 		"DISPLAY_TOP_PAGER" => "N",
 		"ELEMENT_CODE" => $_REQUEST["ID"],
 		"ELEMENT_ID" => "",
-		"FIELD_CODE" => array("",""),
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
 		"IBLOCK_ID" => "7",
 		"IBLOCK_TYPE" => "sstudio",
 		"IBLOCK_URL" => "",
@@ -44,7 +47,10 @@ $APPLICATION->SetTitle("Мероприятия");
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Страница",
-		"PROPERTY_CODE" => array("",""),
+		"PROPERTY_CODE" => array(
+			0 => "",
+			1 => "",
+		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_CANONICAL_URL" => "N",
 		"SET_LAST_MODIFIED" => "N",
@@ -55,7 +61,8 @@ $APPLICATION->SetTitle("Мероприятия");
 		"SHOW_404" => "N",
 		"USE_PERMISSIONS" => "N",
 		"USE_SHARE" => "N"
-	)
+	),
+	false
 );?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
