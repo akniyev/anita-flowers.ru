@@ -20,6 +20,9 @@ function calculateScroll() {
 	var rangeTop    =   200;
 	var rangeBottom =   500;
 	$('.navmenu li.scrollable1').find('a').each(function(){
+		if (!($( $(this).attr('data-href')).offset())) {
+			return;
+		}
 		contentTop.push( $( $(this).attr('data-href') ).offset().top );
 		contentBottom.push( $( $(this).attr('data-href') ).offset().top + $( $(this).attr('data-href') ).height() );
 	})
@@ -92,7 +95,7 @@ jQuery(document).ready(function() {
 	});
 	
 	// link scroll
-	$('.navmenu ul li.scrollable1 a, .mobile_menu ul li.scrollable1 a, .next_section, #logo a, .go_section').click(function() {  
+	$('.navmenu ul li.scrollable1 a, .mobile_menu ul li.scrollable1 a, .next_section, #logo a, .go_section').click(function() {
 		$('html, body').animate({scrollTop: $(this.hash).offset().top - jQuery('#logo').height() - 38}, 1000);
 		return false;
 	});
