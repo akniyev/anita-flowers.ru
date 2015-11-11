@@ -24,6 +24,8 @@ bitrix/themes/
 bitrix/tools/
 bitrix/tmp/
 bitrix/wizards/
+bitrix/sounds/
+bitrix/updates
 
 bitrix/.access.php
 bitrix/.settings.php
