@@ -95,10 +95,10 @@ jQuery(document).ready(function() {
 	});
 	
 	// link scroll
-	$('.navmenu ul li.scrollable1 a, .mobile_menu ul li.scrollable1 a, .next_section, #logo a, .go_section').click(function() {
-		$('html, body').animate({scrollTop: $(this.hash).offset().top - jQuery('#logo').height() - 38}, 1000);
-		return false;
-	});
+	//$('.navmenu ul li.scrollable1 a, .mobile_menu ul li.scrollable1 a, .next_section, #logo a, .go_section').click(function() {
+	//	$('html, body').animate({scrollTop: $(this.hash).offset().top - jQuery('#logo').height() - 38}, 1000);
+	//	return false;
+	//});
 	
 	// contact form
 	$("#ajax-contact-form").submit(function() {
