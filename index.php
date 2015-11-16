@@ -79,6 +79,8 @@ $APPLICATION->SetTitle("Готовый сайт студии дизайна sStu
 			</h1>
 			<div class="separator"></div>
 			<p>
+				<? var_dump($arResult); ?>
+
 				<?$APPLICATION->IncludeComponent(
 					"bitrix:main.include",
 					"",
@@ -96,7 +98,7 @@ $APPLICATION->SetTitle("Готовый сайт студии дизайна sStu
 	<div class="container">
 		<div class="row">
 
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="service">
 					<a>
 						<div class="icon icon1"></div>
@@ -125,7 +127,7 @@ $APPLICATION->SetTitle("Готовый сайт студии дизайна sStu
 					</p>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="service">
 					<a>
 						<div class="icon icon2"></div>
@@ -154,7 +156,7 @@ $APPLICATION->SetTitle("Готовый сайт студии дизайна sStu
 					</p>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="service">
 					<a>
 						<div class="icon icon3"></div>
@@ -177,6 +179,35 @@ $APPLICATION->SetTitle("Готовый сайт студии дизайна sStu
 							Array(
 								"AREA_FILE_SHOW" => "file",
 								"PATH" => SITE_DIR."sstudioinclude/ico3text.php",
+								"EDIT_TEMPLATE" => ""
+							)
+						);?>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="service">
+					<a>
+						<div class="icon icon1"></div>
+						<div class="title_cont">
+							<?$APPLICATION->IncludeComponent(
+								"bitrix:main.include",
+								"",
+								Array(
+									"AREA_FILE_SHOW" => "file",
+									"PATH" => SITE_DIR."sstudioinclude/ico4tit.php",
+									"EDIT_TEMPLATE" => ""
+								)
+							);?>
+						</div>
+					</a>
+					<p>
+						<?$APPLICATION->IncludeComponent(
+							"bitrix:main.include",
+							"",
+							Array(
+								"AREA_FILE_SHOW" => "file",
+								"PATH" => SITE_DIR."sstudioinclude/ico4text.php",
 								"EDIT_TEMPLATE" => ""
 							)
 						);?>

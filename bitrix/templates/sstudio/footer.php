@@ -142,7 +142,7 @@ IncludeTemplateLangFile(__FILE__);
             	<div class="row">
                     <div class="col-md-12">	
                     	<div class="copyright">
-                            <?=GetMessage("SMS")?>
+                            ©  2015. Anita Flowers
                         </div>
                         <div class="social_icon">
 							<?$APPLICATION->IncludeComponent(
@@ -173,6 +173,6 @@ IncludeTemplateLangFile(__FILE__);
     <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/current.js"></script>
     
      		
-<div style="display:none;"><?=GetMessage("SMS2")?></div>	
+<div style="display:none;">© 2015. Anita Flowers</div>
 </body>
 </html>
