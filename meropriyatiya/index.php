@@ -50,7 +50,7 @@ $APPLICATION->SetTitle("Мероприятия");
 					array(
 						"IBLOCK_TYPE" => "sstudio",
 						"IBLOCK_ID" => "7",
-						"NEWS_COUNT" => "6",
+						"NEWS_COUNT" => "8",
 						"SORT_BY1" => "SORT",
 						"SORT_ORDER1" => "ASC",
 						"SORT_BY2" => "ID",
@@ -82,9 +82,9 @@ $APPLICATION->SetTitle("Мероприятия");
 						"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 						"ADD_SECTIONS_CHAIN" => "N",
 						"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-						"PARENT_SECTION" => "",
+						"PARENT_SECTION" => $_GET["section"],
 						"PARENT_SECTION_CODE" => "",
-						"INCLUDE_SUBSECTIONS" => "Y",
+						"INCLUDE_SUBSECTIONS" => "N",
 						"PAGER_TEMPLATE" => ".default",
 						"DISPLAY_TOP_PAGER" => "N",
 						"DISPLAY_BOTTOM_PAGER" => "N",
@@ -118,4 +118,4 @@ $APPLICATION->SetTitle("Мероприятия");
 
 
 
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

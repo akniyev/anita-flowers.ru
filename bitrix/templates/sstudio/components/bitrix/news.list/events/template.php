@@ -11,27 +11,99 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+//getting subsections list
+$arFilter = Array("IBLOCK_ID"=>$arResult["ID"], "SECTION_ID"=>$_GET["section"]);
+$db_list = CIBlockSection::GetList(Array("NAME"=>"ASC"), $arFilter, false);
+while ($arr = $db_list->GetNext()) {
+	$arResult["SECTIONS"][$arr["ID"]]["NAME"] = $arr["NAME"];
+	$arResult["SECTIONS"][$arr["ID"]]["DESCRIPTION"] = $arr["DESCRIPTION"];
+	$arResult["SECTIONS"][$arr["ID"]]["PICTURE"] = $arr["PICTURE"];
+	//test_dump($arr);
+}
 ?>
 
-<?foreach($arResult["ITEMS"] as $arItem):?>
-	<?
-	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-	?>
 
-	<div class="col-md-3" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-		<div class="service">
-			<a href="<?= $arItem["DETAIL_PAGE_URL"] ?>">
-				<div class=""><img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="" /></div>
-				<div class="title_cont">
-					<?= $arItem["NAME"]; ?>
-				</div>
-			</a>
-			<p>
-				<?=$arItem["PREVIEW_TEXT"]; ?>
-			</p>
-		</div>
+
+<?if (isset($arResult["SECTIONS"])):?>
+	<div class="row">
+		<h2 class="merosectitle">
+			<?$APPLICATION->IncludeComponent(
+				"bitrix:main.include",
+				"",
+				Array(
+					"AREA_FILE_SHOW" => "file",
+					"PATH" => SITE_DIR."sstudioinclude/merosectitle.php",
+					"EDIT_TEMPLATE" => ""
+				)
+			);?>
+		</h2>
 	</div>
+	<? // sections
+		$cnt = 0; ?>
+	<?foreach($arResult["SECTIONS"] as $arId=>$arItem):?>
+		<div class="col-md-3">
+			<div class="service">
+				<a href="/meropriyatiya/index.php?section=<?=$arId?>">
+					<div class=""><img src="<?= $arItem["PICTURE"]["SRC"]?>" alt="" /></div>
+					<div class="title_cont">
+						<?= $arItem["NAME"]; ?>
+					</div>
+				</a>
+				<? /* <p><?= $arItem["DESCRIPTION"]; ?></p> */ ?>
+			</div>
+		</div>
+		<?if ($cnt >= 3):?>
+			<div class="clearboth"></div>
+			<?$cnt = 0;?>
+		<?else:?>
+			<?$cnt++;?>
+		<?endif;?>
+	<?endforeach;?>
+	<div class="clearboth"></div>
+<?endif;?>
 
 
-<?endforeach;?>
+<?if (isset($arResult["ITEMS"])):?>
+	<div class="row">
+		<h2 class="merosectitle">
+			<?$APPLICATION->IncludeComponent(
+				"bitrix:main.include",
+				"",
+				Array(
+					"AREA_FILE_SHOW" => "file",
+					"PATH" => SITE_DIR."sstudioinclude/meroelemtitle.php",
+					"EDIT_TEMPLATE" => ""
+				)
+			);?>
+		</h2>
+	</div>
+	<? // elements
+	$cnt = 0; ?>
+	<?foreach($arResult["ITEMS"] as $arItem):?>
+		<?
+			$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+			$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+		?>
+
+		<div class="col-md-3" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+			<div class="service">
+				<a href="<?= $arItem["DETAIL_PAGE_URL"] ?>">
+					<div class=""><img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="" /></div>
+					<div class="title_cont">
+						<?= $arItem["NAME"]; ?>
+					</div>
+				</a>
+				<p>
+					<?=$arItem["PREVIEW_TEXT"]; ?>
+				</p>
+			</div>
+		</div>
+		<?if ($cnt >= 3):?>
+			<div class="clearboth"></div>
+			<?$cnt = 0;?>
+		<?else:?>
+			<?$cnt++;?>
+		<?endif;?>
+	<?endforeach;?>
+<?endif;?>
