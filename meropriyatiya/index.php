@@ -35,7 +35,7 @@ if (isset($section)){
 				),
 				1 => Array(
 						"NAME"=>$secname,
-						"ID"=>$secid
+						"ID"=>null
 				),
 		);?>
 		<?$APPLICATION->IncludeComponent("bitrix:breadcrumb","events",

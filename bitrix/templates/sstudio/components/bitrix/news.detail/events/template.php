@@ -12,10 +12,36 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 $pictures = $arResult["PROPERTIES"]["IMAGE_GALERY"]["VALUE"];
+
+
+//getting section parameters
+if(CModule::IncludeModule("IBlock")) {
+	$sectquery = CIBlockSection::GetByID($arResult["IBLOCK_SECTION_ID"]);
+	$section = $sectquery->GetNext();
+	//category dets
+	$secname = $section["NAME"];
+	$secid = $section["ID"];
+	$secdescr = $section["DESCRIPTION"];
+	//parent category
+	$db_list = CIBlockSection::GetByID($section["IBLOCK_SECTION_ID"]);
+	$psecdetails = $db_list->GetNext();
+	$psecname = $psecdetails["NAME"];
+	$psecid = $psecdetails["ID"];
+}
 ?>
 
 <!-- broadcrumbs -->
 <div class="container">
+	<?$GLOBALS["SUBSECTIONS"] = Array(
+			0 => Array(
+					"NAME"=>$psecname,
+					"ID"=>$psecid
+			),
+			1 => Array(
+					"NAME"=>$secname,
+					"ID"=>$secid
+			),
+	);?>
 	<?$APPLICATION->IncludeComponent("bitrix:breadcrumb","events",
 		Array(
 			"START_FROM" => "2",
