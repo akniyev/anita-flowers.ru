@@ -11,6 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+$pictures = $arResult["PROPERTIES"]["IMAGE_GALERY"]["VALUE"];
 ?>
 
 
@@ -22,31 +23,9 @@ $this->setFrameMode(true);
 		<div class="container">
 			<h1>
 				<?=$arResult["NAME"]?>
-				<?/*$APPLICATION->IncludeComponent(
-					"bitrix:main.include",
-					".default",
-					array(
-						"AREA_FILE_SHOW" => "file",
-						"PATH" => SITE_DIR."sstudioinclude/usltit.php",
-						"EDIT_TEMPLATE" => "",
-						"COMPONENT_TEMPLATE" => ".default"
-					),
-					false
-				);*/?>
 			</h1>
 			<div class="separator"></div>
 			<p style="width:100%; text-align: justify;">
-				<?/*$APPLICATION->IncludeComponent(
-					"bitrix:main.include",
-					".default",
-					array(
-						"AREA_FILE_SHOW" => "file",
-						"PATH" => SITE_DIR."sstudioinclude/usltext.php",
-						"EDIT_TEMPLATE" => "",
-						"COMPONENT_TEMPLATE" => ".default"
-					),
-					false
-				);*/?>
 				<?if(strlen($arResult["DETAIL_TEXT"])>0):?>
 					<?= $arResult["DETAIL_TEXT"];?>
 				<?else:?>
@@ -151,27 +130,76 @@ $this->setFrameMode(true);
 					"",
 					Array(
 						"AREA_FILE_SHOW" => "file",
-						"PATH" => SITE_DIR."sstudioinclude/perttit.php",
+						"PATH" => SITE_DIR."sstudioinclude/permertit.php",
 						"EDIT_TEMPLATE" => ""
 					)
-				);?>
+				);?><?=$arResult["NAME"]?>
 			</h2>
 			<div class="separator"></div>
-			<p>
+			<noindex><p>
 				<?$APPLICATION->IncludeComponent(
 					"bitrix:main.include",
 					"",
 					Array(
 						"AREA_FILE_SHOW" => "file",
-						"PATH" => SITE_DIR."sstudioinclude/porttext.php",
+						"PATH" => SITE_DIR."sstudioinclude/permertext.php",
 						"EDIT_TEMPLATE" => ""
 					)
 				);?>
-			</p>
+			</p></noindex>
 		</div><!-- end .container -->
 	</header>
 	<!-- //section header -->
-	<?$APPLICATION->IncludeComponent(
+
+
+	<!-- portfolio_block -->
+	<?/*<div class="filter_block">
+		<div class="filter_navigation">
+			<ul id="options" class="splitter">
+				<li>
+					<ul data-option-key="filter" class="optionset">
+						<li class="selected"><a data-option-value="*" href="#filter"><?=GetMessage("ALL")?></a></li>
+						<?foreach($arResult[elemcats] as $cat):?>
+							<li><a title="<?=$arResult[cats][$cat][NAME]?>" data-option-value=".<?=$arResult[cats][$cat][CODE]?>" href="#filter"><?=$arResult[cats][$cat][NAME]?></a></li>
+						<?endforeach;?>
+					</ul>
+				</li>
+			</ul>
+		</div><!-- .filter_navigation -->
+	</div>*/?>
+
+	<div class="container">
+		<div class="row">
+			<!-- Products -->
+			<div class="portfolio_block image-grid columns3" id="list">
+
+				<?foreach($pictures as $picture):?>
+					<?
+					//$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+					//$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+					?>
+
+					<div class="col-md-4 element <?=$arResult[cats][$arItem['IBLOCK_SECTION_ID']][CODE]?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+						<div class="img_block">
+							<a href="<?=CFile::GetPath($picture)?>" class="prettyPhoto" data-rel="prettyPhoto[portfolio55]">
+								<?=CFile::ShowImage($picture);?>
+								<div class="caption">
+									<div class="info"><?=$arItem["NAME"]?></div>
+								</div>
+							</a>
+						</div>
+					</div><!-- .element -->
+				<?endforeach;?>
+			</div><!-- .products_block -->
+			<div class="clear"></div>
+			<!-- //Products -->
+		</div>
+	</div>
+	<!-- portfolio_block -->
+
+
+
+	<?/*$APPLICATION->IncludeComponent(
 		"bitrix:news.list",
 		"gallery",
 		Array(
@@ -219,7 +247,7 @@ $this->setFrameMode(true);
 			"DISPLAY_PREVIEW_TEXT" => "N",
 			"AJAX_OPTION_ADDITIONAL" => ""
 		)
-	);?>
+	);*/?>
 
 
 </section>
