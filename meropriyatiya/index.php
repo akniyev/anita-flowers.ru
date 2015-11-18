@@ -42,23 +42,6 @@ if (isset($section)){
 					}?>
 				</h1>
 				<div class="separator"></div>
-				<p>
-					<?if (isset($section)) {
-						echo $secdescr;
-					} else {
-						$APPLICATION->IncludeComponent(
-							"bitrix:main.include",
-							".default",
-							array(
-								"AREA_FILE_SHOW" => "file",
-								"PATH" => SITE_DIR . "sstudioinclude/merptext.php",
-								"EDIT_TEMPLATE" => "",
-								"COMPONENT_TEMPLATE" => ".default"
-							),
-							false
-						);
-					}?>
-				</p>
 			</div><!-- end .container -->
 		</header>
 		<!-- //section header -->
@@ -133,6 +116,29 @@ if (isset($section)){
 
 			</div>
 		</div><!-- end .container -->
+
+
+		<div class="container">
+			<div class="separator"></div>
+			<p>
+				<?if (isset($section)) {
+					echo $secdescr;
+				} else {
+					$APPLICATION->IncludeComponent(
+						"bitrix:main.include",
+						".default",
+						array(
+							"AREA_FILE_SHOW" => "file",
+							"PATH" => SITE_DIR . "sstudioinclude/merptext.php",
+							"EDIT_TEMPLATE" => "",
+							"COMPONENT_TEMPLATE" => ".default"
+						),
+						false
+					);
+				}?>
+			</p>
+		</div><!-- end .container -->
+
 	</section>
 
 

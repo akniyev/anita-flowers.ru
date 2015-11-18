@@ -11,6 +11,8 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+$picwidth=120;
+$picheight=120;
 ?>
 
 
@@ -35,7 +37,9 @@ $this->setFrameMode(true);
 		<div class="col-md-3">
 			<div class="service">
 				<a href="/meropriyatiya/index.php?section=<?=$arId?>">
-					<div class=""><img src="<?= $arItem["PICTURE"]["SRC"]?>" alt="" /></div>
+					<div class="">
+						<?=CFile::ShowImage($arItem["PICTURE"],$picwidth,$picheight);?>
+					</div>
 					<div class="title_cont">
 						<?= $arItem["NAME"]; ?>
 					</div>
@@ -79,7 +83,9 @@ $this->setFrameMode(true);
 		<div class="col-md-3" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 			<div class="service">
 				<a href="<?= $arItem["DETAIL_PAGE_URL"] ?>">
-					<div class=""><img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="" /></div>
+					<div class="">
+						<?=CFile::ShowImage($arItem["PREVIEW_PICTURE"]["SRC"],$picwidth,$picheight);?>
+					</div>
 					<div class="title_cont">
 						<?= $arItem["NAME"]; ?>
 					</div>

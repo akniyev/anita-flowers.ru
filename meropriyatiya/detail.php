@@ -7,7 +7,7 @@ $APPLICATION->SetTitle("Мероприятия");
 
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.detail", 
-	"gallery", 
+	"events", 
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_ELEMENT_CHAIN" => "N",
@@ -22,7 +22,7 @@ $APPLICATION->SetTitle("Мероприятия");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"COMPONENT_TEMPLATE" => "gallery",
+		"COMPONENT_TEMPLATE" => "events",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -49,7 +49,7 @@ $APPLICATION->SetTitle("Мероприятия");
 		"PAGER_TITLE" => "Страница",
 		"PROPERTY_CODE" => array(
 			0 => "",
-			1 => "",
+			1 => "EVENT_SERVICES",
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_CANONICAL_URL" => "N",
