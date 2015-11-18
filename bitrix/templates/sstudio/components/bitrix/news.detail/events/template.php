@@ -21,7 +21,8 @@ $this->setFrameMode(true);
 	<header>
 		<div class="container">
 			<h1>
-				<?$APPLICATION->IncludeComponent(
+				<?=$arResult["NAME"]?>
+				<?/*$APPLICATION->IncludeComponent(
 					"bitrix:main.include",
 					".default",
 					array(
@@ -31,11 +32,11 @@ $this->setFrameMode(true);
 						"COMPONENT_TEMPLATE" => ".default"
 					),
 					false
-				);?>
+				);*/?>
 			</h1>
 			<div class="separator"></div>
-			<p>
-				<?$APPLICATION->IncludeComponent(
+			<p style="width:100%; text-align: justify;">
+				<?/*$APPLICATION->IncludeComponent(
 					"bitrix:main.include",
 					".default",
 					array(
@@ -45,8 +46,16 @@ $this->setFrameMode(true);
 						"COMPONENT_TEMPLATE" => ".default"
 					),
 					false
-				);?>
-			</p>
+				);*/?>
+				<?if(strlen($arResult["DETAIL_TEXT"])>0):?>
+					<?= $arResult["DETAIL_TEXT"];?>
+				<?else:?>
+					<?= $arResult["PREVIEW_TEXT"];?>
+				<?endif?>
+			</p><br/><br/>
+			<p style="width:100%; text-align: center;">
+				<a style="font-weight: bold;" href="<?echo $arResult["LIST_PAGE_URL"];?>"><?=GetMessage("NEWS_BACK_TEXT")?></a>
+			</p><br/><br/>
 		</div><!-- end .container -->
 	</header>
 	<!-- //section header -->
@@ -125,27 +134,6 @@ $this->setFrameMode(true);
 	</div><!-- end .container -->
 </section>
 
-
-
-
-<div class="container">
-	<h1 id="pagetitle"><?=$arResult["NAME"]?></h1>
-
-	<div class="news-detail">
-		<?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
-			<span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
-		<?endif;?>
-		<?if(strlen($arResult["DETAIL_TEXT"])>0):?>
-			<?= $arResult["DETAIL_TEXT"];?>
-		<?else:?>
-			<?= $arResult["PREVIEW_TEXT"];?>
-		<?endif?>
-		<div style="clear:both"></div><br>
-	</div>
-	<p style="width:100%; text-align: center;">
-		<a style="font-weight: bold;" href="<?echo $arResult["LIST_PAGE_URL"];?>"><?=GetMessage("NEWS_BACK_TEXT")?></a>
-	</p><br/><br/>
-</div>
 
 
 
