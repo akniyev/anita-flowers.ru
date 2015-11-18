@@ -6,16 +6,47 @@ $section = $_GET["section"];
 if (isset($section)){
 	$arFilter = Array("IBLOCK_ID"=>"7", "ID"=>$section);
 	if(CModule::IncludeModule("IBlock")) {
+		//category dets
 		$db_list = CIBlockSection::GetList(Array("NAME"=>"ASC"), $arFilter, false);
 		$secdetails = $db_list->GetNext();
 		$secname = $secdetails["NAME"];
+		$secid = $secdetails["ID"];
 		$secdescr = $secdetails["DESCRIPTION"];
+		//parent category
+		$db_list = CIBlockSection::GetByID($secdetails["IBLOCK_SECTION_ID"]);
+		$psecdetails = $db_list->GetNext();
+		$psecname = $psecdetails["NAME"];
+		$psecid = $psecdetails["ID"];
 	}
 	$APPLICATION->SetTitle($secname);
 } else {
 	$APPLICATION->SetTitle("Мероприятия");
 }
 ?>
+
+
+<!-- broadcrumbs -->
+<?if (isset($section)):?>
+	<div class="container">
+		<?$GLOBALS["SUBSECTIONS"] = Array(
+				0 => Array(
+						"NAME"=>$psecname,
+						"ID"=>$psecid
+				),
+				1 => Array(
+						"NAME"=>$secname,
+						"ID"=>$secid
+				),
+		);?>
+		<?$APPLICATION->IncludeComponent("bitrix:breadcrumb","events",
+				Array(
+						"START_FROM" => "1",
+						"PATH" => "",
+						"SITE_ID" => "s1"
+				)
+		);?>
+	</div>
+<?endif;?>
 
 
 

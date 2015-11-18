@@ -16,11 +16,13 @@ $strReturn = '';
 
 
 //getting subsections list
-$arFilter = Array("IBLOCK_ID"=>$arResult["ID"], "ID"=>$_GET["section"]);
-$arr = CIBlockSection::GetByID(Array("NAME"=>"ASC"), $arFilter, false);
+/*$psecname = $GLOBALS["SUBSECTIONS"][0]["NAME"];
+$psecid = $GLOBALS["SUBSECTIONS"][0]["ID"];
+$secname = $GLOBALS["SUBSECTIONS"][1]["NAME"];
+$secid = $GLOBALS["SUBSECTIONS"][1]["ID"];
 
-echo test_dump($arr);
-
+echo "heres: ".$psecid.$psecname."<br/>".$secid.$secname;
+*/
 //we can't use $APPLICATION->SetAdditionalCSS() here because we are inside the buffered function GetNavChain()
 $css = $APPLICATION->GetCSSArray();
 if(!is_array($css) || !in_array("/bitrix/css/main/font-awesome.css", $css))
@@ -39,6 +41,7 @@ for($index = 0; $index < $itemSize; $index++)
 	$child = ($index > 0? ' itemprop="child"' : '');
 	$arrow = ($index > 0? '<i class="fa fa-angle-right"></i>' : '');
 
+
 	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
 	{
 		$strReturn .= '
@@ -53,17 +56,24 @@ for($index = 0; $index < $itemSize; $index++)
 	{
 		$strReturn .= '
 			<div class="bx-breadcrumb-item" id="bx_breadcrumb_'.$index.'" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"'.$child.$nextRef.'>
-				'.$arrow.'
 				<a href="'.$arResult[$index]["LINK"].'" title="'.$title.'" itemprop="url">
 					<span itemprop="title">'.$title.'</span>
 				</a>
 			</div>';
 
-		/*$strReturn .= '
-			<div class="bx-breadcrumb-item">
-				'.$arrow.'
-				<span>'.$title.'</span>
-			</div>';*/
+		$narrow = '<i class="fa fa-angle-right"></i>';
+		foreach ($GLOBALS["SUBSECTIONS"] as $subsect) {
+			if (isset($subsect["NAME"])) {
+				$strReturn .= '
+				<div class="bx-breadcrumb-item" id="bx_breadcrumb_' . $index . '" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"' . $child . $nextRef . '>
+					' . $narrow . '
+					<a href="' . $arResult[$index]["LINK"] . '?section=' . $subsect["ID"] . '" title="' . $subsect["NAME"] . '" itemprop="url">
+						<span itemprop="title">' . $subsect["NAME"] . '</span>
+					</a>
+				</div>';
+			}
+		}
+
 	}
 }
 

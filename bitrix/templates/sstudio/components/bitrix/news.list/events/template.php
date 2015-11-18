@@ -17,21 +17,6 @@ $picheight=120;
 ?>
 
 
-<!-- broadcrumbs -->
-<?if (isset($section)):?>
-	<div class="container">
-		<?$APPLICATION->IncludeComponent("bitrix:breadcrumb","events",
-			Array(
-				"START_FROM" => "1",
-				"PATH" => "",
-				"SITE_ID" => "s1"
-			)
-		);?>
-	</div>
-<?endif;?>
-
-
-
 <?if (isset($arResult["SECTIONS"])):?>
 	<div class="row">
 		<h2 class="merosectitle">
