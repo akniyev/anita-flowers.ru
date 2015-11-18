@@ -14,6 +14,16 @@ $this->setFrameMode(true);
 $pictures = $arResult["PROPERTIES"]["IMAGE_GALERY"]["VALUE"];
 ?>
 
+<!-- broadcrumbs -->
+<div class="container">
+	<?$APPLICATION->IncludeComponent("bitrix:breadcrumb","events",
+		Array(
+			"START_FROM" => "2",
+			"PATH" => "",
+			"SITE_ID" => "s1"
+		)
+	);?>
+</div>
 
 
 <!-- events content -->
@@ -32,9 +42,9 @@ $pictures = $arResult["PROPERTIES"]["IMAGE_GALERY"]["VALUE"];
 					<?= $arResult["PREVIEW_TEXT"];?>
 				<?endif?>
 			</p><br/><br/>
-			<p style="width:100%; text-align: center;">
+			<p class="centeredp">
 				<a style="font-weight: bold;" href="<?echo $arResult["LIST_PAGE_URL"];?>"><?=GetMessage("NEWS_BACK_TEXT")?></a>
-			</p><br/><br/>
+			</p><br/><br />
 		</div><!-- end .container -->
 	</header>
 	<!-- //section header -->
@@ -115,10 +125,6 @@ $pictures = $arResult["PROPERTIES"]["IMAGE_GALERY"]["VALUE"];
 
 
 
-
-
-
-
 <!-- portfolio content-->
 <section class="page_section bg_gray" id="portfolio">
 	<!-- section header -->
@@ -153,32 +159,12 @@ $pictures = $arResult["PROPERTIES"]["IMAGE_GALERY"]["VALUE"];
 
 
 	<!-- portfolio_block -->
-	<?/*<div class="filter_block">
-		<div class="filter_navigation">
-			<ul id="options" class="splitter">
-				<li>
-					<ul data-option-key="filter" class="optionset">
-						<li class="selected"><a data-option-value="*" href="#filter"><?=GetMessage("ALL")?></a></li>
-						<?foreach($arResult[elemcats] as $cat):?>
-							<li><a title="<?=$arResult[cats][$cat][NAME]?>" data-option-value=".<?=$arResult[cats][$cat][CODE]?>" href="#filter"><?=$arResult[cats][$cat][NAME]?></a></li>
-						<?endforeach;?>
-					</ul>
-				</li>
-			</ul>
-		</div><!-- .filter_navigation -->
-	</div>*/?>
-
 	<div class="container">
 		<div class="row">
 			<!-- Products -->
 			<div class="portfolio_block image-grid columns3" id="list">
 
 				<?foreach($pictures as $picture):?>
-					<?
-					//$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-					//$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-					?>
-
 					<div class="col-md-4 element <?=$arResult[cats][$arItem['IBLOCK_SECTION_ID']][CODE]?>" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 						<div class="img_block">
 							<a href="<?=CFile::GetPath($picture)?>" class="prettyPhoto" data-rel="prettyPhoto[portfolio55]">
@@ -196,59 +182,6 @@ $pictures = $arResult["PROPERTIES"]["IMAGE_GALERY"]["VALUE"];
 		</div>
 	</div>
 	<!-- portfolio_block -->
-
-
-
-	<?/*$APPLICATION->IncludeComponent(
-		"bitrix:news.list",
-		"gallery",
-		Array(
-			"IBLOCK_TYPE" => "sstudio",
-			"IBLOCK_ID" => "3",
-			"NEWS_COUNT" => "100",
-			"SORT_BY1" => "SORT",
-			"SORT_ORDER1" => "ASC",
-			"SORT_BY2" => "ID",
-			"SORT_ORDER2" => "DESC",
-			"FILTER_NAME" => "",
-			"FIELD_CODE" => array(0=>"",1=>"",),
-			"PROPERTY_CODE" => array(""),
-			"CHECK_DATES" => "Y",
-			"DETAIL_URL" => "",
-			"AJAX_MODE" => "N",
-			"AJAX_OPTION_JUMP" => "N",
-			"AJAX_OPTION_STYLE" => "Y",
-			"AJAX_OPTION_HISTORY" => "N",
-			"CACHE_TYPE" => "A",
-			"CACHE_TIME" => "36000000",
-			"CACHE_FILTER" => "N",
-			"CACHE_GROUPS" => "N",
-			"PREVIEW_TRUNCATE_LEN" => "",
-			"ACTIVE_DATE_FORMAT" => "",
-			"SET_STATUS_404" => "N",
-			"SET_TITLE" => "N",
-			"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-			"ADD_SECTIONS_CHAIN" => "N",
-			"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-			"PARENT_SECTION" => "",
-			"PARENT_SECTION_CODE" => "",
-			"INCLUDE_SUBSECTIONS" => "Y",
-			"PAGER_TEMPLATE" => ".default",
-			"DISPLAY_TOP_PAGER" => "N",
-			"DISPLAY_BOTTOM_PAGER" => "N",
-			"PAGER_TITLE" => "",
-			"PAGER_SHOW_ALWAYS" => "N",
-			"PAGER_DESC_NUMBERING" => "N",
-			"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-			"PAGER_SHOW_ALL" => "N",
-			"DISPLAY_DATE" => "N",
-			"DISPLAY_NAME" => "Y",
-			"DISPLAY_PICTURE" => "Y",
-			"DISPLAY_PREVIEW_TEXT" => "N",
-			"AJAX_OPTION_ADDITIONAL" => ""
-		)
-	);*/?>
-
 
 </section>
 

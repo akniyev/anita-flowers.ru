@@ -11,9 +11,24 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-$picwidth=120;
+$section = $_GET["section"];
+$picwidth =120;
 $picheight=120;
 ?>
+
+
+<!-- broadcrumbs -->
+<?if (isset($section)):?>
+	<div class="container">
+		<?$APPLICATION->IncludeComponent("bitrix:breadcrumb","events",
+			Array(
+				"START_FROM" => "1",
+				"PATH" => "",
+				"SITE_ID" => "s1"
+			)
+		);?>
+	</div>
+<?endif;?>
 
 
 
@@ -83,7 +98,7 @@ $picheight=120;
 		<div class="col-md-3" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 			<div class="service">
 				<a href="<?= $arItem["DETAIL_PAGE_URL"] ?>">
-					<div class="">
+					<div>
 						<?=CFile::ShowImage($arItem["PREVIEW_PICTURE"]["SRC"],$picwidth,$picheight);?>
 					</div>
 					<div class="title_cont">
@@ -103,3 +118,4 @@ $picheight=120;
 		<?endif;?>
 	<?endforeach;?>
 <?endif;?>
+

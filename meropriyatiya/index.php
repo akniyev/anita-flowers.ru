@@ -117,7 +117,6 @@ if (isset($section)){
 			</div>
 		</div><!-- end .container -->
 
-
 		<div class="container">
 			<div class="separator"></div>
 			<p>
@@ -138,7 +137,6 @@ if (isset($section)){
 				}?>
 			</p>
 		</div><!-- end .container -->
-
 	</section>
 
 

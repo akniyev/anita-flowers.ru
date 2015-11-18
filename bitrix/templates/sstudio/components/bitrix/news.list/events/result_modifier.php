@@ -7,6 +7,5 @@ while ($arr = $db_list->GetNext()) {
 	$arResult["SECTIONS"][$arr["ID"]]["NAME"] = $arr["NAME"];
 	$arResult["SECTIONS"][$arr["ID"]]["DESCRIPTION"] = $arr["DESCRIPTION"];
 	$arResult["SECTIONS"][$arr["ID"]]["PICTURE"] = $arr["PICTURE"];
-	//test_dump($arr);
 }
 ?>
