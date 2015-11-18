@@ -1,6 +1,20 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Мероприятия");
+$section = $_GET["section"];
+
+//getting section parameters
+if (isset($section)){
+	$arFilter = Array("IBLOCK_ID"=>"7", "ID"=>$section);
+	if(CModule::IncludeModule("IBlock")) {
+		$db_list = CIBlockSection::GetList(Array("NAME"=>"ASC"), $arFilter, false);
+		$secdetails = $db_list->GetNext();
+		$secname = $secdetails["NAME"];
+		$secdescr = $secdetails["DESCRIPTION"];
+	}
+	$APPLICATION->SetTitle($secname);
+} else {
+	$APPLICATION->SetTitle("Мероприятия");
+}
 ?>
 
 
@@ -11,31 +25,39 @@ $APPLICATION->SetTitle("Мероприятия");
 		<header>
 			<div class="container">
 				<h1>
-					<?$APPLICATION->IncludeComponent(
-						"bitrix:main.include",
-						".default",
-						array(
-							"AREA_FILE_SHOW" => "file",
-							"PATH" => SITE_DIR."sstudioinclude/meroptit.php",
-							"EDIT_TEMPLATE" => "",
-							"COMPONENT_TEMPLATE" => ".default"
-						),
-						false
-					);?>
+					<?if (isset($section)) {
+						echo $secname;
+					} else {
+						$APPLICATION->IncludeComponent(
+							"bitrix:main.include",
+							".default",
+							array(
+								"AREA_FILE_SHOW" => "file",
+								"PATH" => SITE_DIR . "sstudioinclude/meroptit.php",
+								"EDIT_TEMPLATE" => "",
+								"COMPONENT_TEMPLATE" => ".default"
+							),
+							false
+						);
+					}?>
 				</h1>
 				<div class="separator"></div>
 				<p>
-					<?$APPLICATION->IncludeComponent(
-						"bitrix:main.include",
-						".default",
-						array(
-							"AREA_FILE_SHOW" => "file",
-							"PATH" => SITE_DIR."sstudioinclude/merptext.php",
-							"EDIT_TEMPLATE" => "",
-							"COMPONENT_TEMPLATE" => ".default"
-						),
-						false
-					);?>
+					<?if (isset($section)) {
+						echo $secdescr;
+					} else {
+						$APPLICATION->IncludeComponent(
+							"bitrix:main.include",
+							".default",
+							array(
+								"AREA_FILE_SHOW" => "file",
+								"PATH" => SITE_DIR . "sstudioinclude/merptext.php",
+								"EDIT_TEMPLATE" => "",
+								"COMPONENT_TEMPLATE" => ".default"
+							),
+							false
+						);
+					}?>
 				</p>
 			</div><!-- end .container -->
 		</header>
@@ -43,7 +65,6 @@ $APPLICATION->SetTitle("Мероприятия");
 
 		<div class="container">
 			<div class="row">
-
 				<?$APPLICATION->IncludeComponent(
 					"bitrix:news.list",
 					"events",
@@ -82,7 +103,7 @@ $APPLICATION->SetTitle("Мероприятия");
 						"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 						"ADD_SECTIONS_CHAIN" => "N",
 						"HIDE_LINK_WHEN_NO_DETAIL" => "N",
-						"PARENT_SECTION" => $_GET["section"],
+						"PARENT_SECTION" => $section,
 						"PARENT_SECTION_CODE" => "",
 						"INCLUDE_SUBSECTIONS" => "N",
 						"PAGER_TEMPLATE" => ".default",
