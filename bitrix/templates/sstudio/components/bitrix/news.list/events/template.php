@@ -54,53 +54,37 @@ $picheight=120;
 			<?$cnt++;?>
 		<?endif;?>
 	<?endforeach;?>
-	<div class="clearboth"></div>
 <?endif;?>
 
+<?if ($section != NULL):?>
+	<?if (isset($arResult["ITEMS"])):?>
+		<?foreach($arResult["ITEMS"] as $arItem):?>
+			<?
+				$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+				$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+			?>
 
-<?if (isset($arResult["ITEMS"])):?>
-	<div class="row">
-		<h2 class="merosectitle">
-			<?$APPLICATION->IncludeComponent(
-				"bitrix:main.include",
-				"",
-				Array(
-					"AREA_FILE_SHOW" => "file",
-					"PATH" => SITE_DIR."sstudioinclude/meroelemtitle.php",
-					"EDIT_TEMPLATE" => ""
-				)
-			);?>
-		</h2>
-	</div>
-	<? // elements
-	$cnt = 0; ?>
-	<?foreach($arResult["ITEMS"] as $arItem):?>
-		<?
-			$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-			$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-		?>
-
-		<div class="col-md-3" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-			<div class="service">
-				<a href="<?= $arItem["DETAIL_PAGE_URL"] ?>">
-					<div>
-						<?=CFile::ShowImage($arItem["PREVIEW_PICTURE"]["SRC"],$picwidth,$picheight);?>
-					</div>
-					<div class="title_cont">
-						<?= $arItem["NAME"]; ?>
-					</div>
-				</a>
-				<p>
-					<?=$arItem["PREVIEW_TEXT"]; ?>
-				</p>
+			<div class="col-md-3" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+				<div class="service">
+					<a href="<?= $arItem["DETAIL_PAGE_URL"] ?>">
+						<div>
+							<?=CFile::ShowImage($arItem["PREVIEW_PICTURE"]["SRC"],$picwidth,$picheight);?>
+						</div>
+						<div class="title_cont">
+							<?= $arItem["NAME"]; ?>
+						</div>
+					</a>
+					<p>
+						<?=$arItem["PREVIEW_TEXT"]; ?>
+					</p>
+				</div>
 			</div>
-		</div>
-		<?if ($cnt >= 3):?>
-			<div class="clearboth"></div>
-			<?$cnt = 0;?>
-		<?else:?>
-			<?$cnt++;?>
-		<?endif;?>
-	<?endforeach;?>
+			<?if ($cnt >= 3):?>
+				<div class="clearboth"></div>
+				<?$cnt = 0;?>
+			<?else:?>
+				<?$cnt++;?>
+			<?endif;?>
+		<?endforeach;?>
+	<?endif;?>
 <?endif;?>
-

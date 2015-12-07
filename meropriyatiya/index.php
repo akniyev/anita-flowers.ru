@@ -20,7 +20,7 @@ if (isset($section)){
 	}
 	$APPLICATION->SetTitle($secname);
 } else {
-	$APPLICATION->SetTitle("Мероприятия");
+	$APPLICATION->SetTitle("Мероприятия и торжества");
 }
 ?>
 
